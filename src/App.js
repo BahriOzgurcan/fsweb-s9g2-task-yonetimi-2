@@ -5,6 +5,7 @@ import TaskHookForm from "./TaskHookForm";
 import PeopleForm from "./PeopleForm";
 import { initialTasks, initialTeam } from "./data";
 import { toast } from 'react-toastify';
+import { formatISO } from "date-fns";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
     const tasksCopy = [...tasks];
     const ilgiliTask = tasksCopy.filter(t => t.id === id)[0];
     ilgiliTask.status = "yapıldı";
+    ilgiliTask.completeDate = formatISO(new Date())
     setTasks(tasksCopy);
 
     toast.success(`Tebrikler! "${ilgiliTask.title}" tamamlandı!`);
@@ -41,7 +43,7 @@ function App() {
           <PeopleForm kisiler={team} submitFn={handlePeopleSubmit} />
         </div>
       </div>
-      <div className="columns">
+      <div className="columns mt-2 border-4">
         <div className="column">
           <h2 className="column-title">Yapılacaklar</h2>
           <div className="column-list">

@@ -12,6 +12,7 @@ export default function TaskHookForm({ kisiler, submitFn }) {
   } = useForm({ mode: "onChange" });
 
   function mySubmit(data) {
+    console.log(data.dea)
     submitFn({
       ...data,
       id: nanoid(5),
